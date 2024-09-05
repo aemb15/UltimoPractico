@@ -24,4 +24,20 @@ public class BuscarSocio {
     public ArrayList<Socio> getNombresSociosMayoresDe(Predicate<Socio> predicado){
         return miGestor.socios.stream().filter(predicado).collect(Collectors.toCollection(ArrayList<Socio>::new));
     }
+
+    public ArrayList<Socio> getSociosConPrestamosActivos(Predicate<Socio> predicado){
+        return miGestor.socios.stream().filter(predicado).collect(Collectors.toCollection(ArrayList<Socio>::new));
+    }
+
+    public ArrayList<Socio> getSocios(Predicate<Socio> p, Comparator<Socio> c) {
+        return miGestor.socios.stream().filter(p).sorted(c).collect(Collectors.toCollection(ArrayList<Socio>::new));
+    }
+
+    public ArrayList<String> getSocios2(Predicate<Socio> p, Comparator<Socio> c) {
+        return miGestor.socios.stream().filter(p).sorted(c).map(s->s.toString()).collect(Collectors.toCollection(ArrayList<String>::new));
+    }
+
+    public ArrayList<Integer> getSocios3(Predicate<Socio> p, Comparator<Socio> c) {
+        return miGestor.socios.stream().filter(p).sorted(c).map(s->s.getNroSocio()).collect(Collectors.toCollection(ArrayList<Integer>::new));
+    }
 }

@@ -1,7 +1,9 @@
 package dominio;
 
 
-public class AgregarSocio {
+import java.util.function.Predicate;
+
+public class AgregarSocio{
 
     private GestorDeSocios miGestor;
 
@@ -19,5 +21,9 @@ public class AgregarSocio {
         if(miGestor.socios.contains(socio))
             return true;
         return false;
+    }
+
+    public boolean existeSocioConNombre(Predicate<Socio> predicado) {
+        return miGestor.socios.stream().filter(predicado).findFirst().isPresent();
     }
 }
