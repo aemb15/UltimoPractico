@@ -9,13 +9,16 @@ public class GestorDeSocios implements IGestorDeSocios {
 	
 	private static GestorDeSocios gs;
 	public ArrayList<Socio> socios;
+	private GuardarDatos guardarDatos;
+	private CargarDatos cargarDatos;
 	private AgregarSocio agregarSocio;
 	private EliminarSocio eliminarSocio;
 	private LimpiarSocio limpiarSocio;
 	private BuscarSocio buscarSocio;
 	private PromedioEdad promedioEdad;
+
 	
-	private GestorDeSocios() {
+	/*public GestorDeSocios() {
 		socios = new ArrayList<Socio>();
 	}
 	
@@ -23,6 +26,18 @@ public class GestorDeSocios implements IGestorDeSocios {
 		if (gs == null)
 			gs = new GestorDeSocios();
 		return gs;
+	}*/
+
+	public void guardarDatos(){
+		/*Persistencia persistencia = new Persistencia();
+		persistencia.guardarLista(socios);*/
+		this.guardarDatos.guardarDatos();
+	}
+
+	public void cargarDatos(){
+		/*Persistencia persistencia = new Persistencia();
+		socios = persistencia.cargarLista();*/
+		this.cargarDatos.cargarDatos();
 	}
 
 	public void agregarSocio(Socio socio) {

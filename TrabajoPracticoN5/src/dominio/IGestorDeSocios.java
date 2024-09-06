@@ -6,6 +6,8 @@ import java.util.function.Predicate;
 
 public interface IGestorDeSocios {
 
+    void guardarDatos();
+    void cargarDatos();
     void agregarSocio(Socio socio);
     boolean verificarSocio(Socio socio);
     void eliminarSocio(Socio socio);
