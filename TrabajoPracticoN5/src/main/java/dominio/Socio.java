@@ -1,5 +1,7 @@
 package dominio;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -15,12 +17,12 @@ import exceptions.ExceptionSocioNroSocioNegativo;
 public class Socio{
 	String nombre;
 	String apellido;
-	Calendar fechaNacto;
+	LocalDate fechaNacto;
 	Genero miGenero;
 	int nroSocio;
 	boolean tienePrestamos;
 	
-	public Socio(String nombre, String apellido, Calendar fechaNacto, Genero miGenero, int nroSocio,
+	public Socio(String nombre, String apellido, LocalDate fechaNacto, Genero miGenero, int nroSocio,
 			boolean tienePrestamos) throws ExceptionSocio{
 		super();
 		if(nombre == null)
@@ -59,11 +61,11 @@ public class Socio{
 		this.apellido = apellido;
 	}
 
-	public Calendar getFechaNacto() {
+	public LocalDate getFechaNacto() {
 		return fechaNacto;
 	}
 
-	public void setFechaNacto(Calendar fechaNacto) {
+	public void setFechaNacto(LocalDate fechaNacto) {
 		this.fechaNacto = fechaNacto;
 	}
 
@@ -142,13 +144,10 @@ public class Socio{
 
 
 	public int getEdad() {
-		Calendar fechaNacimiento = this.fechaNacto;
-		Calendar fechaActual= Calendar.getInstance();
-		//int year = cal.get(Calendar.YEAR);
-		//fechaNacto = new GregorianCalendar();
-		//int edad = fechactual.get(Calendar.YEAR) - fechaNacto.get(Calendar.YEAR);
-		int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
-		return edad;
+		//LocalDate fechaNacimiento = this.fechaNacto;
+		//LocalDate fechaActual= LocalDate.now();
+		//int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+		return Period.between(this.fechaNacto, LocalDate.now()).getYears();
 	}
 	
 
