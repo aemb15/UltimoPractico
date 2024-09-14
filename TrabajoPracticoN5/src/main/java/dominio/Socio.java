@@ -15,12 +15,12 @@ import exceptions.ExceptionSocioNroSocioNegativo;
 
 
 public class Socio{
-	String nombre;
-	String apellido;
-	LocalDate fechaNacto;
-	Genero miGenero;
-	int nroSocio;
-	boolean tienePrestamos;
+	private String nombre;
+	private String apellido;
+	private LocalDate fechaNacto;
+	private Genero miGenero;
+	private int nroSocio;
+	private boolean tienePrestamos;
 	
 	public Socio(String nombre, String apellido, LocalDate fechaNacto, Genero miGenero, int nroSocio,
 			boolean tienePrestamos) throws ExceptionSocio{

@@ -1,39 +1,36 @@
-package test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.function.Predicate;
 
+import dominio.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import dominio.Genero;
-import dominio.GestorDeSocios;
-import dominio.Socio;
 import exceptions.ExceptionSocio;
 
-
-
-
-class TestGestorDeSocios {
+public class TestGestorDeSocios {
 
 	@Test
 	@Order(1)
 	@DisplayName("testAgregarSocio")
 	void test01() throws ExceptionSocio {
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+        //Calendar c1 = new GregorianCalendar(1994,10,15);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true); 
 		Socio s2 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		//Assert
@@ -46,16 +43,17 @@ class TestGestorDeSocios {
 	@DisplayName("testEliminarSocio")
 	void test02() throws ExceptionSocio {
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -79,12 +77,13 @@ class TestGestorDeSocios {
 	@DisplayName("testBuscarSocioPorNumero")
 	void test03() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
+		LocalDate c1 = LocalDate.of(1994,10,15);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true); 
 		Socio s2 = new Socio("Juliana", "Hernandez", c1,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Pedro", "Castillo", c1,Genero.MASCULINO,3,true); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -101,12 +100,13 @@ class TestGestorDeSocios {
 	@DisplayName("testBuscarSocioPorGenero")
 	void test04() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
+		LocalDate c1 = LocalDate.of(1994,10,15);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true); 
 		Socio s2 = new Socio("Juliana", "Hernandez", c1,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Pedro", "Castillo", c1,Genero.MASCULINO,1,true); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -125,16 +125,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSociosOrdenadosPorEdad")
 	void test05() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -160,16 +161,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSociosMayoresDe")
 	void test06() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -191,16 +193,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetPromedioEdad")
 	void test07() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -217,17 +220,18 @@ class TestGestorDeSocios {
 	@DisplayName("testExisteSocioConNombre")
 	void test08() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false);
 		Socio s5 = new Socio("Matias", "Gomez", c3,Genero.MASCULINO,5,true);
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -246,16 +250,17 @@ class TestGestorDeSocios {
 	@DisplayName("testEliminarSociosConEdadMenorA")
 	void test09() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -281,16 +286,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSociosMayoresDe")
 	void test10() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -312,16 +318,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSocios")
 	void test11() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Martinez", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -347,16 +354,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSocios2")
 	void test12() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Sosa", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);
@@ -381,16 +389,17 @@ class TestGestorDeSocios {
 	@DisplayName("testGetSocios3")
 	void test13() throws ExceptionSocio{
 		//Arrange
-		Calendar c1 = new GregorianCalendar(1994,10,15);
-		Calendar c2 = new GregorianCalendar(1989,12,04);
-		Calendar c3 = new GregorianCalendar(1997,05,11);
-		Calendar c4 = new GregorianCalendar(1991,06,22);
+		LocalDate c1 = LocalDate.of(1994,10,15);
+		LocalDate c2 = LocalDate.of(1989,12,04);
+		LocalDate c3 = LocalDate.of(1997,05,11);
+		LocalDate c4 = LocalDate.of(1991,06,22);
 		Socio s1 = new Socio("Matias", "Sosa", c1,Genero.MASCULINO,1,true);
 		Socio s2 = new Socio("Juliana", "Hernandez", c2,Genero.FEMENINO,2,true);
 		Socio s3 = new Socio("Carlos", "Jimenez", c3,Genero.MASCULINO,3,false); 
 		Socio s4 = new Socio("Pedro", "Castillo", c4,Genero.MASCULINO,4,false); 
 		//Actual
-		GestorDeSocios gs = GestorDeSocios.getInstancia();
+		//GestorDeSocios gs = GestorDeSocios.getInstancia();
+		GestorDeSocios gs = new GestorDeSocios();
 		gs.agregarSocio(s1);
 		gs.agregarSocio(s2);
 		gs.agregarSocio(s3);

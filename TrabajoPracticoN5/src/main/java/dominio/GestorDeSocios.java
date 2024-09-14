@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public abstract class GestorDeSocios implements IGestorDeSocios {
+public class GestorDeSocios implements IGestorDeSocios {
 	
 	private static GestorDeSocios gs;
 	public ArrayList<Socio> socios;
@@ -55,6 +55,21 @@ public abstract class GestorDeSocios implements IGestorDeSocios {
 			return true;
 		return false;*/
 		return this.agregarSocio.verificarSocio(socio);
+	}
+
+	@Override
+	public void eliminarSocio(Socio socio) {
+
+	}
+
+	@Override
+	public boolean existeSocio(Socio socio) {
+		return false;
+	}
+
+	@Override
+	public void limpiarSocio() {
+
 	}
 
 
